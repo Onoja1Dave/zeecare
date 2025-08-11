@@ -1,0 +1,821 @@
+/* resources/css/app.css */
+
+/* --- Brand Colors (FINALIZED) --- */
+:root {
+    /* Light Mode Colors */
+    --primary-blue: #44dcdc; /* Your original --primary-blue */
+    --secondary-blue: rgb(50, 129, 129); /* Your original --secondary-blue */
+    --accent-green: #5cb85c; /* Your original --accent-green */
+    --background-light: #f9fafc; /* Your original --background-light */
+    --white: #ffffff; /* Your original --white */
+    --text-dark: #333333; /* Your original --text-dark */
+    --text-muted: #666666; /* Your original --text-muted */
+    --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.08); /* Your original --shadow-soft */
+    --shadow-hover: 0 15px 45px rgba(0, 0, 0, 0.15); /* Your original --shadow-hover */
+    --light-blue-bg-section: #ebf8ff; /* Your original --light-blue-bg-section */
+
+    /* Mapped Brand Variables for Dashboard Specifics */
+    --brand-primary: var(--primary-blue);
+    --brand-primary-dark: var(--secondary-blue);
+    --brand-accent: var(--accent-green);
+
+    /* RGB equivalents for rgba() */
+    --primary-blue-rgb: 68, 220, 220;
+    --accent-green-rgb: 92, 184, 92;
+
+    /* Dynamic Theme Colors (Light Mode Defaults) */
+    --body-bg: var(--background-light);
+    --card-bg: var(--white);
+    --text-color: var(--text-dark);
+    --text-color-muted: var(--text-muted);
+    --border-color: rgba(0, 0, 0, 0.05);
+    --shadow-color-main: rgba(0, 0, 0, 0.08);
+    --shadow-color-hover: rgba(0, 0, 0, 0.15);
+    --progress-ring-bg: #e0e0e0; /* Default neutral for progress ring track */
+    --unread-notification-bg: var(--light-blue-bg-section);
+    --navbar-bg: var(--white);
+    --navbar-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    --btn-outline-text: var(--secondary-blue);
+    --btn-outline-border: var(--secondary-blue);
+    --btn-outline-hover-bg: var(--secondary-blue);
+}
+
+/* Dark Mode Overrides (Your original setup) */
+body.dark-mode {
+    --body-bg: #1a202c;
+    --card-bg: #2d3748;
+    --text-color: #e2e8f0;
+    --text-color-muted: #a0aec0;
+    --border-color: rgba(255, 255, 255, 0.1);
+    --shadow-color-main: rgba(0, 0, 0, 0.3);
+    --shadow-color-hover: rgba(0, 0, 0, 0.45);
+    --progress-ring-bg: #4a5568;
+    --unread-notification-bg: #3c4a5c;
+    --navbar-bg: #2d3748;
+    --navbar-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    --btn-outline-text: var(--primary-blue);
+    --btn-outline-border: var(--primary-blue);
+    --btn-outline-hover-bg: var(--primary-blue);
+}
+
+/* --- Global Styles (Your original setup, minor adjustments for consistency) --- */
+body {
+    font-family: "Inter", sans-serif;
+    color: var(--text-color);
+    background-color: var(--body-bg);
+    line-height: 1.7;
+    overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.card-title {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-weight: 700;
+    color: var(--text-color);
+    transition: color 0.3s ease;
+}
+
+a {
+    color: var(--brand-primary); /* Use brand-primary for links */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+a:hover {
+    color: var(
+        --brand-primary-dark
+    ); /* Use brand-primary-dark for link hover */
+    text-decoration: underline;
+}
+
+/* Navbar Styling (Your original setup) */
+.navbar {
+    background-color: var(--navbar-bg) !important;
+    box-shadow: var(--navbar-shadow);
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+.navbar-brand .logo-svg {
+    filter: invert(0%) brightness(100%);
+    transition: filter 0.3s ease;
+}
+body.dark-mode .navbar-brand .logo-svg {
+    filter: invert(100%) brightness(100%);
+}
+.navbar .nav-link {
+    font-weight: 500;
+    color: var(--text-color-muted) !important;
+    margin: 0 15px;
+    transition: color 0.3s ease;
+}
+.navbar .nav-link:hover,
+.navbar .nav-link.active {
+    color: var(--brand-primary) !important; /* Use brand-primary */
+}
+/* General Button Styling (Your original setup) */
+.btn {
+    border-radius: 30px;
+    padding: 0.65rem 1.75rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+.btn-outline-primary,
+.btn-outline-secondary {
+    color: var(--btn-outline-text);
+    border-color: var(--btn-outline-border);
+    background-color: transparent;
+    transition: all 0.3s ease;
+}
+.btn-outline-primary:hover,
+.btn-outline-secondary:hover {
+    background-color: var(--btn-outline-hover-bg);
+    color: var(--white);
+    box-shadow: 0 6px 15px var(--shadow-color-hover);
+}
+.btn-primary,
+.btn-primary-filled,
+.btn-info {
+    background-color: var(--brand-primary); /* Use brand-primary */
+    border-color: var(--brand-primary); /* Use brand-primary */
+    color: var(--white);
+    transition: all 0.3s ease;
+}
+
+.message-bubble.bg-primary-filled {
+    background-color: var(
+        --brand-primary
+    ) !important; /* Use the darker primary for background */
+    color: var(--white) !important; /* Ensure text is white */
+    /* Optionally add a border if doctor's messages have one and you want consistency */
+    /* border: 1px solid var(--brand-primary-dark); */
+}
+
+/* Adjust the small text (timestamp) color for better contrast on the darker background */
+.message-bubble.bg-primary-filled small {
+    color: rgba(
+        255,
+        255,
+        255,
+        0.7
+    ) !important; /* A slightly transparent white for small text */
+}
+
+.btn-primary:hover,
+.btn-primary-filled:hover,
+.btn-info:hover {
+    background-color: var(--brand-primary-dark); /* Use brand-primary-dark */
+    border-color: var(--brand-primary-dark); /* Use brand-primary-dark */
+    box-shadow: 0 6px 15px var(--shadow-color-hover);
+    transform: translateY(-3px);
+}
+.btn-light {
+    background-color: var(--card-bg) !important;
+    border-color: var(--border-color);
+    color: var(--text-color) !important;
+}
+.btn-light:hover {
+    background-color: var(--light-blue-bg-section) !important;
+    color: var(--text-dark) !important;
+    box-shadow: 0 6px 15px var(--shadow-color-hover);
+    transform: translateY(-3px);
+}
+body.dark-mode .btn-light {
+    background-color: var(--card-bg) !important;
+    border-color: var(--border-color);
+    color: var(--text-color) !important;
+}
+body.dark-mode .btn-light:hover {
+    background-color: #3b4555 !important;
+    color: var(--text-color) !important;
+    box-shadow: 0 6px 15px var(--shadow-color-hover);
+    transform: translateY(-3px);
+}
+
+/* Dashboard Action Buttons (Your original setup) */
+.dashboard-action-btn {
+    box-shadow: var(--shadow-soft);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+}
+.dashboard-action-btn:hover {
+    box-shadow: var(--shadow-hover);
+    transform: translateY(-3px);
+}
+
+/* General Card Styling (Your original setup, minor adjustments for consistency) */
+.card {
+    border: none;
+    border-radius: 15px;
+    box-shadow: var(--shadow-soft);
+    background-color: var(--card-bg);
+    transition: all 0.3s ease;
+}
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+}
+.card-header {
+    background-color: transparent !important;
+    border-bottom: 1px solid var(--border-color);
+    padding: 1.25rem 1.5rem;
+    color: var(--text-color);
+    transition: all 0.3s ease;
+}
+.card-body {
+    color: var(--text-color);
+    transition: color 0.3s ease;
+}
+.card-text {
+    color: var(--text-color-muted) !important;
+}
+
+/* List Group Items (Your original setup, minor adjustments for consistency) */
+.list-group-item {
+    background-color: transparent !important;
+    border-color: var(--border-color) !important;
+    color: var(--text-color);
+    padding: 1rem 0;
+    transition: all 0.3s ease;
+}
+.list-group-item:last-child {
+    border-bottom: none !important;
+}
+/* Unread Notification Specific Style (Your original setup) */
+.unread-notification-item {
+    background-color: var(--unread-notification-bg) !important;
+    font-weight: 600;
+}
+body.dark-mode .unread-notification-item {
+    background-color: var(--unread-notification-bg) !important;
+}
+
+/* Checkbox Styling (Your original setup) */
+.form-check-input.medication-taken-checkbox {
+    width: 1.5em;
+    height: 1.5em;
+    margin-right: 0.5em;
+    border-radius: 0.25em;
+    border: 2px solid var(--primary-blue);
+    transition: all 0.2s ease;
+    background-color: var(--card-bg);
+}
+.form-check-input.medication-taken-checkbox:checked {
+    background-color: var(--accent-green);
+    border-color: var(--accent-green);
+}
+body.dark-mode .form-check-input.medication-taken-checkbox {
+    border-color: var(--primary-blue);
+}
+body.dark-mode .form-check-input.medication-taken-checkbox:checked {
+    background-color: var(--accent-green);
+    border-color: var(--accent-green);
+}
+.form-check-label {
+    font-size: 1rem;
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+/* Dark Mode Toggle Button (Your original setup) */
+.dark-mode-toggle {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    padding: 0.5rem 0.75rem;
+    border-radius: 50%;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    transition: all 0.3s ease;
+}
+.dark-mode-toggle:hover {
+    box-shadow: var(--shadow-soft);
+    transform: translateY(-2px);
+}
+body.dark-mode .dark-mode-toggle {
+    color: #fbd38d;
+    background-color: #4a5568;
+    border-color: #4a5568;
+}
+body.dark-mode .dark-mode-toggle:hover {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+/* --- Floating Action Button (FAB) Menu Styles --- */
+.fab-menu-button {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 1050;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+    transition: all 0.3s ease;
+    background-color: var(--brand-accent); /* FAB uses accent color */
+    border-color: var(--brand-accent);
+    color: #fff;
+}
+
+.fab-menu-button:hover {
+    transform: scale(1.08);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.35);
+    filter: brightness(1.1); /* Slight brightness increase on hover */
+}
+
+.fab-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(
+        var(--primary-blue-rgb),
+        0.95
+    ); /* Overlay uses primary color, semi-transparent */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1060;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.fab-overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.fab-overlay-content {
+    text-align: center;
+    color: #fff;
+}
+
+.fab-overlay-content .nav-link {
+    font-size: 2.8rem;
+    font-weight: 700;
+    padding: 1.2rem 0;
+    display: block;
+    color: rgba(255, 255, 255, 0.8);
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.fab-overlay-content .nav-link:hover,
+.fab-overlay-content .nav-link.active-fab {
+    color: #fff;
+    transform: scale(1.1);
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
+}
+
+.fab-overlay-content .nav-link i {
+    margin-right: 20px;
+    font-size: 2.5rem;
+}
+
+.fab-overlay .close-btn {
+    position: absolute;
+    top: 40px;
+    right: 40px;
+    font-size: 2.5rem;
+    color: #fff;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.fab-overlay .close-btn:hover {
+    transform: rotate(90deg) scale(1.1);
+    color: #f0f0f0;
+}
+
+/* --- Dashboard Specific Styles --- */
+
+/* Caregiver Hero Section */
+.caregiver-hero {
+    background: linear-gradient(
+        135deg,
+        var(--brand-primary) 0%,
+        var(--brand-primary-dark) 100%
+    );
+    color: #fff;
+    padding: 3rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.caregiver-hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    opacity: 0.1;
+    z-index: 0;
+}
+.caregiver-hero .display-5,
+.caregiver-hero .lead,
+.caregiver-hero .badge,
+.caregiver-hero-img {
+    position: relative;
+    z-index: 1;
+}
+
+.caregiver-hero .text-white-75 {
+    color: rgba(255, 255, 255, 0.75) !important;
+}
+
+.caregiver-hero-img {
+    max-height: 200px; /* Adjust as needed for your illustration */
+    width: auto;
+}
+
+/* Dashboard Cards - General Styling */
+.dashboard-card {
+    background-color: var(--card-bg);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px; /* Consistent with your card border-radius */
+    box-shadow: var(--shadow-soft); /* Consistent with your card shadow */
+}
+
+.dashboard-card.animate-hover-lift:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-hover);
+}
+
+/* Card Gradients (using brand colors) */
+.dashboard-card.card-gradient-primary {
+    background: linear-gradient(
+        45deg,
+        var(--brand-primary) 0%,
+        var(--brand-primary-dark) 100%
+    );
+    color: #fff; /* Ensure text is white on dark gradients */
+}
+.dashboard-card.card-gradient-accent {
+    background: linear-gradient(
+        45deg,
+        var(--brand-accent) 0%,
+        color-mix(in srgb, var(--brand-accent) 80%, black) 100%
+    );
+    color: #fff; /* Ensure text is white on dark gradients */
+}
+/* You can add more gradient variants if needed, e.g., card-gradient-secondary */
+
+/* Today's Snapshot Section */
+.snapshot-card {
+    background-color: var(--card-bg); /* Use light/dark card background */
+}
+body.dark-mode .snapshot-card {
+    background-color: var(--card-bg) !important;
+}
+
+.snapshot-item {
+    background-color: var(
+        --light-blue-bg-section
+    ); /* Use a light themed background */
+    border: 1px solid var(--border-color); /* Add a subtle border */
+    transition: all 0.3s ease;
+}
+
+body.dark-mode .snapshot-item {
+    background-color: rgba(
+        var(--primary-blue-rgb),
+        0.15
+    ) !important; /* Slightly darker subtle blue for dark mode */
+}
+.snapshot-item:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-soft);
+}
+
+.snapshot-item .text-primary {
+    color: var(--brand-primary) !important;
+}
+.snapshot-item .text-accent {
+    color: var(--brand-accent) !important;
+}
+
+.btn-outline-accent {
+    color: var(--brand-accent);
+    border-color: var(--brand-accent);
+}
+.btn-outline-accent:hover {
+    background-color: var(--brand-accent);
+    color: var(--white);
+}
+
+/* Patient Status At-a-Glance */
+.patient-status-card {
+    background-color: var(--card-bg); /* Use light/dark card background */
+}
+body.dark-mode .patient-status-card {
+    background-color: var(--card-bg) !important;
+}
+
+.patient-status-indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+    flex-shrink: 0;
+}
+.patient-status-indicator.stable {
+    background-color: var(--brand-accent);
+}
+.patient-status-indicator.needs_monitoring {
+    background-color: #f0ad4e;
+} /* Orange for warning */
+.patient-status-indicator.critical {
+    background-color: #dc3545;
+} /* Red for danger */
+
+.badge.bg-success {
+    background-color: var(--brand-accent) !important;
+}
+.badge.bg-warning {
+    background-color: #f0ad4e !important;
+} /* Use a specific warning color */
+.badge.bg-danger {
+    background-color: #dc3545 !important;
+} /* Use a specific danger color */
+
+/* Progress Ring Styling (Updated to use brand colors) */
+.progress-ring {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+}
+.progress-ring-svg {
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+}
+.progress-ring-circle,
+.progress-ring-progress {
+    fill: none;
+    stroke-width: 10;
+}
+.progress-ring-circle {
+    stroke: var(--progress-ring-bg);
+}
+.progress-ring-progress {
+    stroke: var(--brand-primary); /* Progress color is now brand primary */
+    stroke-linecap: round;
+    transition: stroke-dashoffset 0.8s ease-out;
+}
+.progress-ring-text {
+    position: absolute;
+    font-size: 1.8rem;
+    color: var(--text-color);
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-weight: 700;
+}
+body.dark-mode .progress-ring-progress {
+    stroke: var(--brand-primary);
+}
+
+/* Actionable Lists (Urgent Alerts, Pending Tasks) - Consistent styling */
+.bg-danger-subtle {
+    background-color: rgba(
+        var(--accent-green-rgb),
+        0.1
+    ) !important; /* Using accent-green for positive alerts */
+    color: var(--brand-accent) !important;
+}
+body.dark-mode .bg-danger-subtle {
+    background-color: rgba(var(--accent-green-rgb), 0.2) !important;
+}
+
+.bg-primary-subtle {
+    background-color: rgba(
+        var(--primary-blue-rgb),
+        0.1
+    ) !important; /* Using primary-blue for tasks */
+    color: var(--brand-primary) !important;
+}
+body.dark-mode .bg-primary-subtle {
+    background-color: rgba(var(--primary-blue-rgb), 0.2) !important;
+}
+
+.list-group-item.bg-transparent {
+    background-color: transparent !important;
+}
+
+.list-group-item .btn-outline-accent {
+    /* For alert view buttons */
+    color: var(--brand-accent);
+    border-color: var(--brand-accent);
+}
+.list-group-item .btn-outline-accent:hover {
+    background-color: var(--brand-accent);
+    color: #fff;
+}
+
+.list-group-item .btn-outline-primary {
+    /* For task complete/view buttons */
+    color: var(--brand-primary);
+    border-color: var(--brand-primary);
+}
+.list-group-item .btn-outline-primary:hover {
+    background-color: var(--brand-primary);
+    color: #fff;
+}
+
+/* Animations (Your original setup) */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate__animated {
+    animation-duration: 1s;
+    animation-fill-mode: both;
+}
+.animate__fadeIn {
+    animation-name: fadeIn;
+}
+.animate__fadeInDown {
+    animation-name: fadeInUp;
+}
+.animate-card {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.6s ease-out forwards;
+    animation-delay: var(--animation-delay);
+}
+.animate-hover-lift {
+    /* Re-applying hover lift to new elements */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.animate-hover-lift:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+}
+
+/* Set animation delays for cards based on order */
+/* Adjust these if your column layout changes significantly, or use AOS directly */
+.col-md-4:nth-child(1) .animate-card {
+    --animation-delay: 0.1s;
+}
+.col-md-4:nth-child(2) .animate-card {
+    --animation-delay: 0.2s;
+}
+.col-md-4:nth-child(3) .animate-card {
+    --animation-delay: 0.3s;
+}
+.col-md-7 .animate-card {
+    --animation-delay: 0.4s;
+}
+.col-md-5 .animate-card {
+    --animation-delay: 0.5s;
+}
+.col-md-6:nth-child(1) .animate-card {
+    --animation-delay: 0.6s;
+}
+.col-md-6:nth-child(2) .animate-card {
+    --animation-delay: 0.7s;
+}
+.col-md-12 .animate-card {
+    --animation-delay: 0.8s;
+}
+
+/* Responsive Adjustments (Your original setup) */
+@media (max-width: 1200px) {
+    .display-6 {
+        font-size: 2.8rem;
+    }
+    .lead {
+        font-size: 1.1rem;
+    }
+    .card-title {
+        font-size: 1.4rem;
+    }
+    .progress-ring {
+        width: 100px;
+        height: 100px;
+    }
+    .progress-ring-svg circle {
+        stroke-width: 8;
+    }
+    .progress-ring-text {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .display-6 {
+        font-size: 2.2rem;
+    }
+    .lead {
+        font-size: 1rem;
+    }
+    .dashboard-action-btn {
+        font-size: 1.2rem;
+        width: 45px;
+        height: 45px;
+    }
+}
+@media (max-width: 768px) {
+    .display-6 {
+        font-size: 1.8rem;
+    }
+    .lead {
+        font-size: 0.9rem;
+    }
+    .dashboard-action-btn {
+        font-size: 1rem;
+        width: 40px;
+        height: 40px;
+        margin-right: 10px !important;
+    }
+    .dark-mode-toggle {
+        width: 35px;
+        height: 35px;
+        font-size: 0.9rem;
+    }
+    .card-title {
+        font-size: 1.2rem;
+    }
+    .card-text {
+        font-size: 0.9rem;
+    }
+    .btn {
+        padding: 0.5rem 1.2rem;
+        font-size: 0.9rem;
+    }
+    .progress-ring {
+        width: 80px;
+        height: 80px;
+    }
+    .progress-ring-svg circle {
+        stroke-width: 6;
+    }
+    .progress-ring-text {
+        font-size: 1.2rem;
+    }
+    .list-group-item {
+        font-size: 0.9rem;
+    }
+
+    .urgent-alerts-scroll-box .list-group {
+        max-height: 250px; /* Adjust this height as needed, approx 3 items + padding */
+        overflow-y: auto; /* Adds scrollbar when content exceeds max-height */
+        -webkit-overflow-scrolling: touch; /* Improves scrolling on touch devices */
+        padding-right: 15px; /* Add some padding to prevent content from touching scrollbar */
+    }
+    /* Optional: Hide scrollbar if not active, useful for aesthetics */
+    .urgent-alerts-scroll-box .list-group::-webkit-scrollbar {
+        width: 8px; /* width of the scrollbar */
+    }
+    .urgent-alerts-scroll-box .list-group::-webkit-scrollbar-thumb {
+        background-color: #ccc; /* color of the scroll thumb */
+        border-radius: 4px; /* roundness of the scroll thumb */
+    }
+    .urgent-alerts-scroll-box .list-group::-webkit-scrollbar-track {
+        background-color: #f1f1f1; /* color of the scrollbar track */
+    }
+}

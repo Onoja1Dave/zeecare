@@ -1,0 +1,111 @@
+{
+    "adapter": {
+        "driver": "local"
+    },
+    "appManager": {
+        "name": "array",
+        "options": {
+            "apps": [
+                {
+                    "id": "my-chat-key",
+                    "key": "ASDFGHJKL",
+                    "secret": "QWERTYU",
+                    "name": "Laravel",
+                    "enableClientMessages": true,
+                    "enabled": true
+                }
+            ]
+        }
+    },
+    "cache": {
+        "driver": "memory",
+        "redis": { "redisOptions": {}, "clusterMode": false }
+    },
+    "channelLimits": { "maxNameLength": 200, "cacheTtl": 3600 },
+
+    "cors": {
+        "credentials": true,
+        "origin": ["*"],
+        "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+        "allowedHeaders": [
+            "Origin",
+            "Content-Type",
+            "X-Auth-Token",
+            "X-Requested-With",
+            "Accept",
+            "Authorization",
+            "X-CSRF-TOKEN",
+            "XSRF-TOKEN",
+            "X-Socket-Id"
+        ]
+    },
+    "database": {
+        "mysql": {
+            "host": "127.0.0.1",
+            "port": 3306,
+            "user": "root",
+            "password": "password",
+            "database": "main"
+        },
+        "postgres": {
+            "host": "127.0.0.1",
+            "port": 5432,
+            "user": "postgres",
+            "password": "password",
+            "database": "main"
+        },
+        "redis": {
+            "host": "127.0.0.1",
+            "port": 6379,
+            "db": 0,
+            "username": null,
+            "password": null,
+            "keyPrefix": "",
+            "sentinels": null,
+            "sentinelPassword": null,
+            "name": "mymaster",
+            "clusterNodes": []
+        }
+    },
+    "databasePooling": { "enabled": false, "min": 0, "max": 7 },
+    "debug": true,
+    "eventLimits": {
+        "maxChannelsAtOnce": 100,
+        "maxNameLength": 200,
+        "maxPayloadInKb": 100,
+        "maxBatchSize": 10
+    },
+    "host": "0.0.0.0",
+    "httpApi": {
+        "requestLimitInMb": 100,
+        "acceptTraffic": { "memoryThreshold": 85 }
+    },
+    "instance": { "process_id": 12368 },
+
+    "mode": "full",
+    "port": 6000,
+    "pathPrefix": "",
+    "presence": { "maxMembersPerChannel": 100, "maxMemberSizeInKb": 2 },
+    "queue": {
+        "driver": "sync",
+        "redis": { "concurrency": 1, "redisOptions": {}, "clusterMode": false },
+        "sqs": {
+            "region": "us-east-1",
+            "endpoint": null,
+            "clientOptions": {},
+            "consumerOptions": {},
+            "queueUrl": "",
+            "processBatch": false,
+            "batchSize": 1,
+            "pollingWaitTimeMs": 0
+        }
+    },
+    "rateLimiter": {
+        "driver": "local",
+        "redis": { "redisOptions": {}, "clusterMode": false }
+    },
+    "shutdownGracePeriod": 3000,
+    "ssl": { "certPath": "", "keyPath": "", "passphrase": "", "caPath": "" },
+    "userAuthenticationTimeout": 30000,
+    "webhooks": { "batching": { "enabled": false, "duration": 50 } }
+}
